@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Directions to</title>
+
+    <link rel="stylesheet" href="./index.js" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="menu">
+      <h1><a href="/index.html">Map 1: T'Alice</a></h1>
+      <h1><a href="/directionsTo.html">Map 2: Getting to the space</a></h1>
+      <h1>Map 3: ?</h1>
+    </div>
+
+    <div class="main">
+      <div class="compass">
+        <p id="north">N</p>
+        <div class="EW">
+          <p id="west">W</p>
+          <p id="east">E</p>
+        </div>
+        <p id="south">S</p>
+      </div>
+      <div class="content-holder">
+        <img
+          class="map-image"
+          id="imageToChange"
+          src="/assets/Destination(N).jpg"
+          alt=""
+        />
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  const faceNorth = ["/assets/Door(N).jpg", "/assets/Destination(N).jpg"];
+
+  const faceSouth = ["/assets/Street(S).jpg"];
+
+  const faceWest = [
+    "/assets/Street(W) POV Door.jpg",
+    //"/assets/Street(W).JPG",
+    //"/assets/Street^2 (W).jpg",
+  ];
+
+  const faceEast = ["/assets/Street^2(E).JPG"];
+
+  let index = 0;
+
+  //Ref to the Image element we want to display/change
+  const imgElement = document.getElementById("imageToChange");
+
+  // Ref to HTML element we want to use as our button. Add an event listener to trigger showNextImage function
+  const north = document.getElementById("north");
+  const south = document.getElementById("south");
+  const east = document.getElementById("east");
+  const west = document.getElementById("west");
+
+  north.addEventListener("click", () => {
+    index = (index + 1) % faceNorth.length;
+    imgElement.src = faceNorth[index];
+  });
+
+  south.addEventListener("click", () => {
+    index = (index + 1) % faceSouth.length;
+    imgElement.src = faceSouth[index];
+  });
+
+  east.addEventListener("click", () => {
+    index = (index + 1) % faceEast.length;
+    imgElement.src = faceEast[index];
+  });
+
+  west.addEventListener("click", () => {
+    index = (index + 1) % faceWest.length;
+    imgElement.src = faceWest[index];
+  });
+
+  imgElement.addEventListener("click", function () {
+    showNextImage(imageArr);
+  });
+
+  // function that changes the image to the next one
+  function showNextImage(array) {
+    index = index + 1; // ++
+
+    // If we’ve gone past the last image, start over at 0
+    // could also use modulo : index = (index + 1) % images.length;
+    if (index >= array.length) {
+      index = 0;
+    }
+
+    // Reset the src attribute of the <img> to the new image URL
+    imgElement.src = imageArr[index];
+  }
+</script>

@@ -1,0 +1,44 @@
+#map {
+  height: 580px;
+}
+
+/*****  ---------- *****/
+/*    Directions To    */
+/***** ----------- *****/
+
+.menu {
+  position: absolute;
+}
+.main {
+  border: 4px solid rgb(171, 184, 193, 0.5);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.compass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.EW {
+  display: flex;
+  gap: 100px;
+}
+.compass p {
+  font-size: 22px;
+}
+
+.content-holder {
+  justify-content: center;
+  display: flex;
+  width: 70%;
+  border: 1px dotted purple;
+}
+
+.map-image {
+  width: 50%;
+}
